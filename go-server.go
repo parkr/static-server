@@ -7,8 +7,8 @@ import (
 )
 
 type Page struct {
-  Title string
-  Body  []byte
+  Path string
+  Body []byte
 }
 
 func loadPage(path string) (*Page, error) {
@@ -22,7 +22,7 @@ func loadPage(path string) (*Page, error) {
 func handler(w http.ResponseWriter, r *http.Request) {
   page, err := loadPage(r.URL.Path[1:])
   if err != nil {
-    fmt.Println(string(err))
+    fmt.Println((err))
   }
   fmt.Fprintf(w, "%s", page.Body)
 }
